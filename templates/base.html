@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Portfolio{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    {% block extra_css %}{% endblock %}
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="text-2xl font-bold text-gray-800">Portfolio</a>
+                <div class="flex space-x-4">
+                    <a href="/" class="px-3 py-2 rounded-md hover:bg-gray-100">Home</a>
+                    <a href="{% url 'blog:post_list' %}" class="px-3 py-2 rounded-md hover:bg-gray-100">Blog</a>
+                    <a href="{% url 'shop:product_list' %}" class="px-3 py-2 rounded-md hover:bg-gray-100">Shop</a>
+                    <a href="{% url 'services:service_list' %}" class="px-3 py-2 rounded-md hover:bg-gray-100">Services</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Content -->
+    <main class="max-w-7xl mx-auto px-4 py-8">
+        {% include 'includes/messages.html' %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p>&copy; 2023 Your Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
